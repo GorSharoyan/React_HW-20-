@@ -3,27 +3,42 @@ import React from 'react'
 export default class App extends React.Component{
     constructor(props){
         super(props);
-        // state{
 
-        // }
+        this.state= {
+            count:0,
+            step:0,
+        }
     }
 
-    handleIncrease(){
+    handleIncrease=()=>{
+        this.setState((prevState)=>({
+            count:prevState.count+prevState.step
+        }))
+    }   
+    
 
-    }
-    handleDecrease(){
+    handleDecrease=()=>{
+        this.setState((prevState)=>({
+            count:prevState.count-prevState.step
+        }))
+   
+    }      
 
+    
+    handleReset=()=>{
+        this.setState((prevState)=>({
+            count:0,
+            step:0,
+        }))
     }
-    handleReset(){
 
-    }
     render(){
         return(
             <div>
                 <div>
-                    <button onClick={handleIncrease}>increase</button>
-                    <button onClick={handleDecrease}>decrease</button>
-                    <button onclick={handleReset}>reset</button>
+                    <button onClick={this.handleIncrease}>increase</button>
+                    <button onClick={this.handleDecrease}>decrease</button>
+                    <button onclick={this.handleReset}>reset</button>
                 </div>
                 <div>
                     <input placeholder={'minimum value'}/>
