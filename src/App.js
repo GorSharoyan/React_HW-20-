@@ -1,5 +1,10 @@
-import React from 'react'
-import './App.css'
+import React from 'react';
+import './App.css';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
+
+
 
 export default class App extends React.Component{
     constructor(props){
@@ -69,30 +74,46 @@ export default class App extends React.Component{
                     <h1>Counter App</h1>
                 </div>
                 <div className='button-bar'>
-                    <button onClick={this.handleIncrease}>increase</button>
-                    <button onClick={this.handleDecrease}>decrease</button>
-                    <button onclick={this.handleReset}>reset</button>
+                    <Button variant="outlined" size="medium" color="primary"  onClick={this.handleIncrease}>
+                        Increase
+                    </Button>
+                    <Button variant="outlined" size="medium" color="primary"  onClick={this.handleDecrease}>
+                        Decrease
+                    </Button>
+                    <Button variant="outlined" size="medium" color="primary"  onClick={this.handleReset}>
+                        Reset
+                    </Button>
                 </div>
                 <div className='input-form'>
                     <form onSubmit={this.handleSubmit}> 
                         <label >
                             <h3>Set Minimum Value</h3>
-                            <input value={this.state.minVal} onChange={this.handleMinVal} placeholder={'minimum value'}/>
+                            <TextField id="outlined-basic" label="Minimum Value" variant="outlined" 
+                             value={this.state.minVal} onChange={this.handleMinVal}  />
                         </label>
                         <br></br>
                         <label>
                             <h3>Set Maximum Value</h3>
-                            <input value={this.state.maxVal} onChange={this.handleMaxVal} placeholder={'maximum value'}/>
+                            <TextField id="outlined-basic" label="Minimum Value" variant="outlined" 
+                             value={this.state.maxVal} onChange={this.handleMaxVal} />
                         </label>
                         <br></br>
                         <label>
                             <h3>Set Step</h3>
-                            <input value={this.state.step}   onChange={this.handleStep} placeholder={'step'}/>
+                            <TextField id="outlined-basic" label="Minimum Value" variant="outlined" 
+                             value={this.state.step} onChange={this.handleStep} />
                         </label>
                         <br></br>
-                        <button>Subbmit</button>
+                        <Button variant="contained" color="primary" href="#contained-buttons">
+                            Submit
+                        </Button>
                     </form>
                 </div>
+                <footer>
+                    <hr></hr>
+                    <p>(C) Copyright Gor SHAROYAN /</p>
+                    <p> UI created by using :https://material-ui.com</p>
+                </footer>   
              </div>   
         )
     }

@@ -2,21 +2,35 @@
     display:flex;
     flex-direction: column;
 }
+
 .counter-app{
     border:3px solid green;
-    padding:none;
+    padding:15px;
 }
+
 .button-bar{
-    text-align: center;
+      text-align: center;
+      border:3px gray;
 }
+
+.input-form,{
+  padding:5px;
+  margin:25px;
+  border-radius: 35px;
+  }
+
 .input-form{
     display: flex;
     flex-direction: column;
     text-align: center;
     justify-content: space-between;
 }
-.input-form label input,button {
-    margin-top:15px;
-    margin-bottom:15px;
+
+footer{
+    text-align: center;
+    font-size: 13px;
 }
 
+/* button{
+    margin:35px;
+} */
