@@ -1,0 +1,22 @@
+.counter-app{
+    display:flex;
+    flex-direction: column;
+}
+.counter-app{
+    border:3px solid green;
+    padding:none;
+}
+.button-bar{
+    text-align: center;
+}
+.input-form{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-between;
+}
+.input-form label input,button {
+    margin-top:15px;
+    margin-bottom:15px;
+}
+
