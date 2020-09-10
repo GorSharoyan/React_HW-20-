@@ -88,19 +88,19 @@ export default class App extends React.Component{
                     <form onSubmit={this.handleSubmit}> 
                         <label >
                             <h3>Set Minimum Value</h3>
-                            <TextField id="outlined-basic" label="Minimum Value" variant="outlined" 
+                            <TextField id="outlined-basic" label="Minimum Value" variant="outlined" type='number'
                              value={this.state.minVal} onChange={this.handleMinVal}  />
                         </label>
                         <br></br>
                         <label>
                             <h3>Set Maximum Value</h3>
-                            <TextField id="outlined-basic" label="Minimum Value" variant="outlined" 
+                            <TextField id="outlined-basic" label="Minimum Value" variant="outlined" type='number'
                              value={this.state.maxVal} onChange={this.handleMaxVal} />
                         </label>
                         <br></br>
                         <label>
                             <h3>Set Step</h3>
-                            <TextField id="outlined-basic" label="Minimum Value" variant="outlined" 
+                            <TextField id="outlined-basic" label="Minimum Value" variant="outlined" type='number'
                              value={this.state.step} onChange={this.handleStep} />
                         </label>
                         <br></br>
