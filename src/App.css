@@ -12,7 +12,10 @@
       text-align: center;
       border:3px gray;
 }
-
+.counter-value{
+    text-align: center;
+    font-weight: 250;
+}
 .input-form {
   padding:5px;
   margin:25px;

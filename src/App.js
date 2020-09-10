@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
+
 
 
 
@@ -12,57 +12,66 @@ export default class App extends React.Component{
 
         this.state= {
             count:0,
-            step:0,
-            maxVal:9999,
+            step:1,
+            maxVal:0,
+            minVal:0,
         }
     }
 //Buttons
 
     handleIncrease=()=>{
+        if(this.state.count<this.state.maxVal){
         this.setState((prevState)=>({
-            count:prevState.count+prevState.step
+            count:prevState.count+Number(prevState.step),
         }))
+     }
     }   
     
 
     handleDecrease=()=>{
-        this.setState((prevState)=>({
-            count:prevState.count-prevState.step
+        if(this.state.count>this.state.minVal){
+       this.setState((prevState)=>({
+            count:prevState.count-Number(prevState.step),
         }))
-   
+     }
     }      
 
     
     handleReset=()=>{
         this.setState((prevState)=>({
             count:0,
-            step:0,
-            maxVal:9999,
+            step:1,
+            maxVal:0,
+            minVal:0,
         }))
+        
     }
 //Form
 
     handleMinVal=(event)=>{
+      let validValue=!Number.isNaN(Number(event.target.value));
+      if(validValue){  
         this.setState({
-            count:event.target.value
+            minVal:event.target.value
         })
+     }
     }
     handleMaxVal=(event)=>{
+        let validValue=!Number.isNaN(Number(event.target.value));  
+        if(validValue){ 
         this.setState({
             maxVal:event.target.value
         })
+     }
     }
-
     handleStep=(event)=>{
         this.setState({
             step:event.target.value
         })
     }
     handleSubmit=(event)=>{
-        event.preventDefault();
-        // thie.setState({
-            
-        // })
+        localStorage.setItem('state',JSON.stringify(this.state))
+    
     }
 
 
@@ -84,6 +93,9 @@ export default class App extends React.Component{
                         Reset
                     </Button>
                 </div>
+                <div className='counter-value'>
+                    <p>{this.state.count}</p>
+                </div>   
                 <div className='input-form'>
                     <form onSubmit={this.handleSubmit}> 
                         <label >
@@ -94,17 +106,17 @@ export default class App extends React.Component{
                         <br></br>
                         <label>
                             <h3>Set Maximum Value</h3>
-                            <TextField id="outlined-basic" label="Minimum Value" variant="outlined" type='number'
+                            <TextField id="outlined-basic" label="Maximum Value" variant="outlined" type='number'
                              value={this.state.maxVal} onChange={this.handleMaxVal} />
                         </label>
                         <br></br>
                         <label>
                             <h3>Set Step</h3>
-                            <TextField id="outlined-basic" label="Minimum Value" variant="outlined" type='number'
+                            <TextField id="outlined-basic" label="Step" variant="outlined" type='number'
                              value={this.state.step} onChange={this.handleStep} />
                         </label>
                         <br></br>
-                        <Button variant="contained" color="primary" href="#contained-buttons">
+                        <Button variant="contained" color="primary" href="#contained-buttons" onClick={this.handleSubmit} >
                             Submit
                         </Button>
                     </form>
