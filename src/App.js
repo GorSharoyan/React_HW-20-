@@ -1,150 +1,160 @@
-import React from 'react';
-import './App.css';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
+import React from "react";
+import "./App.css";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
 
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
 
+    this.state = {
+      count: 0,
+      step: 1,
+      maxVal: 10,
+      minVal: 0,
+      error: "",
+    };
+  }
+  //Buttons
 
-
-export default class App extends React.Component{
-    constructor(props){
-        super(props);
-
-        this.state= {
-            count:0,
-            step:1,
-            maxVal:0,
-            minVal:0,
-        }
+  handleIncrease = () => {
+    if (this.state.count < this.state.maxVal) {
+      this.setState((prevState) => ({
+        count: prevState.count + Number(prevState.step),
+      }));
     }
-//Buttons
+  };
 
-    handleIncrease=()=>{
-        if(this.state.count<this.state.maxVal){
-        this.setState((prevState)=>({
-            count:prevState.count+Number(prevState.step),
-        }))
-     }
-    }   
-    
+  handleDecrease = () => {
+    if (this.state.count > this.state.minVal) {
+      this.setState((prevState) => ({
+        count: prevState.count - Number(prevState.step),
+      }));
+    }
+  };
 
-    handleDecrease=()=>{
-        if(this.state.count>this.state.minVal){
-       this.setState((prevState)=>({
-            count:prevState.count-Number(prevState.step),
-        }))
-     }
-    }      
+  handleReset = () => {
+    localStorage.setItem("state", JSON.stringify(this.state));
+    this.setState((prevState) => ({
+      count: 0,
+      step: 1,
+      maxVal: 0,
+      minVal: 10,
+    }));
+  };
+  //Form
 
-    
-    handleReset=()=>{
-        this.setState((prevState)=>({
-            count:0,
-            step:1,
-            maxVal:0,
-            minVal:0,
-        }))
-        
+  handleMinVal = (event) => {
+    let validValue = !Number.isNaN(Number(event.target.value));
+    if (validValue) {
+      this.setState({
+        minVal: event.target.value,
+        error: "",
+      });
+    } else {
+      this.setState({
+        error: "Invaild Data !!!",
+      });
     }
-//Form
+  };
 
-    handleMinVal=(event)=>{
-      let validValue=!Number.isNaN(Number(event.target.value));
-      if(validValue){  
-        this.setState({
-            minVal:event.target.value
-        })
-     }
+  handleMaxVal = (event) => {
+    let validValue = !Number.isNaN(Number(event.target.value));
+    if (validValue) {
+      this.setState({
+        maxVal: event.target.value,
+        error: "",
+      });
+    } else {
+      this.setState({
+        error: "Invaild Data !!!",
+      });
     }
-    handleMaxVal=(event)=>{
-        let validValue=!Number.isNaN(Number(event.target.value));  
-        if(validValue){ 
-        this.setState({
-            maxVal:event.target.value
-        })
-     }
-    }
-    handleStep=(event)=>{
-        this.setState({
-            step:event.target.value
-        })
-    }
-    handleSubmit=(event)=>{
-        localStorage.setItem('state',JSON.stringify(this.state))
-    
-    }
+  };
 
-
-//Render
-    render(){
-        return(
-        <body>  
-            <div className='counter-app'>
-               <div className='button-bar'>
-                    <Button variant="outlined" 
-                    size="medium" 
-                    color="primary" 
-                     onClick={this.handleIncrease}>
-                        Increase
-                    </Button>
-                    <Button variant="outlined" s
-                    ize="medium" 
-                    color="primary"  
-                    onClick={this.handleDecrease}>
-                        Decrease
-                    </Button>
-                    <Button variant="outlined"
-                     size="medium" 
-                     color="primary"  
-                    onClick={this.handleReset}>
-                        Reset
-                    </Button>
-                </div>
-                <div className='counter-value'>
-                    <p>{this.state.count}</p>
-                </div>   
-                <div className='input-form'>
-                    <form onSubmit={this.handleSubmit}> 
-                        <label >
-                            <h3>Set Minimum Value</h3>
-                            <TextField id="outlined-basic"
-                             label="Minimum Value" 
-                             variant="outlined" 
-                             type='number'
-                             value={this.state.minVal} 
-                             onChange={this.handleMinVal}  />
-                        </label>
-                        <br></br>
-                        <label>
-                            <h3>Set Maximum Value</h3>
-                            <TextField id="outlined-basic"
-                             label="Maximum Value"
-                              variant="outlined"
-                               type='number'
-                             value={this.state.maxVal}
-                              onChange={this.handleMaxVal} />
-                        </label>
-                        <br></br>
-                        <label>
-                            <h3>Set Step</h3>
-                            <TextField id="outlined-basic" 
-                            label="Step"
-                            variant="outlined"
-                            type='number'
-                            value={this.state.step}
-                            onChange={this.handleStep} />
-                        </label>
-                        <br></br>
-                            <Button variant="contained"
-                            color="primary"
-                            href="#contained-buttons" 
-                            onClick={this.handleSubmit} >
-                                Submit
-                           </Button>
-                    </form>
-                    </div>
-                </div>
-       </body>
-        )
+  handleStep = (event) => {
+    let validValue = !Number.isNaN(Number(event.target.value));
+    if (validValue) {
+      this.setState({
+        step: event.target.value,
+        error: "",
+      });
+    } else {
+      this.setState({
+        error: "Invaild Data !!!",
+      });
     }
+  };
+
+  //Render
+  render() {
+    return (
+      <body>
+        <div className="counter-app">
+          <div className="button-bar">
+            <Button
+              variant="outlined"
+              size="medium"
+              color="primary"
+              onClick={this.handleIncrease}
+            >
+              Increase
+            </Button>
+            <Button
+              variant="outlined"
+              s
+              ize="medium"
+              color="primary"
+              onClick={this.handleDecrease}
+            >
+              Decrease
+            </Button>
+            <Button
+              variant="outlined"
+              size="medium"
+              color="primary"
+              onClick={this.handleReset}
+            >
+              Reset
+            </Button>
+          </div>
+          <div className="counter-value">
+            <p>{this.state.count}</p>
+          </div>
+          <div className="input-form">
+            <label>
+              <h3>Set Minimum Value</h3>
+              <TextField
+                id="outlined-basic"
+                label="Minimum Value"
+                variant="outlined"
+                onChange={this.handleMinVal}
+              />
+            </label>
+            <br></br>
+            <label>
+              <h3>Set Maximum Value</h3>
+              <TextField
+                id="outlined-basic"
+                label="Maximum Value"
+                variant="outlined"
+                onChange={this.handleMaxVal}
+              />
+            </label>
+            <br></br>
+            <label>
+              <h3>Set Step</h3>
+              <TextField
+                id="outlined-basic"
+                label="Step"
+                variant="outlined"
+                onChange={this.handleStep}
+              />
+              <h4 style={{ color: "red" }}>{this.state.error}</h4>
+            </label>
+          </div>
+        </div>
+      </body>
+    );
+  }
 }
