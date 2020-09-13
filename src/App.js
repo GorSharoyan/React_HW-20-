@@ -79,10 +79,7 @@ export default class App extends React.Component{
     render(){
         return(
             <div className='counter-app'>
-                <div className='button-bar'>
-                    <h1>Counter App</h1>
-                </div>
-                <div className='button-bar'>
+               <div className='button-bar'>
                     <Button variant="outlined" size="medium" color="primary"  onClick={this.handleIncrease}>
                         Increase
                     </Button>
