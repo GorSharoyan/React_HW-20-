@@ -78,15 +78,25 @@ export default class App extends React.Component{
 //Render
     render(){
         return(
+        <body>  
             <div className='counter-app'>
                <div className='button-bar'>
-                    <Button variant="outlined" size="medium" color="primary"  onClick={this.handleIncrease}>
+                    <Button variant="outlined" 
+                    size="medium" 
+                    color="primary" 
+                     onClick={this.handleIncrease}>
                         Increase
                     </Button>
-                    <Button variant="outlined" size="medium" color="primary"  onClick={this.handleDecrease}>
+                    <Button variant="outlined" s
+                    ize="medium" 
+                    color="primary"  
+                    onClick={this.handleDecrease}>
                         Decrease
                     </Button>
-                    <Button variant="outlined" size="medium" color="primary"  onClick={this.handleReset}>
+                    <Button variant="outlined"
+                     size="medium" 
+                     color="primary"  
+                    onClick={this.handleReset}>
                         Reset
                     </Button>
                 </div>
@@ -97,33 +107,44 @@ export default class App extends React.Component{
                     <form onSubmit={this.handleSubmit}> 
                         <label >
                             <h3>Set Minimum Value</h3>
-                            <TextField id="outlined-basic" label="Minimum Value" variant="outlined" type='number'
-                             value={this.state.minVal} onChange={this.handleMinVal}  />
+                            <TextField id="outlined-basic"
+                             label="Minimum Value" 
+                             variant="outlined" 
+                             type='number'
+                             value={this.state.minVal} 
+                             onChange={this.handleMinVal}  />
                         </label>
                         <br></br>
                         <label>
                             <h3>Set Maximum Value</h3>
-                            <TextField id="outlined-basic" label="Maximum Value" variant="outlined" type='number'
-                             value={this.state.maxVal} onChange={this.handleMaxVal} />
+                            <TextField id="outlined-basic"
+                             label="Maximum Value"
+                              variant="outlined"
+                               type='number'
+                             value={this.state.maxVal}
+                              onChange={this.handleMaxVal} />
                         </label>
                         <br></br>
                         <label>
                             <h3>Set Step</h3>
-                            <TextField id="outlined-basic" label="Step" variant="outlined" type='number'
-                             value={this.state.step} onChange={this.handleStep} />
+                            <TextField id="outlined-basic" 
+                            label="Step"
+                            variant="outlined"
+                            type='number'
+                            value={this.state.step}
+                            onChange={this.handleStep} />
                         </label>
                         <br></br>
-                        <Button variant="contained" color="primary" href="#contained-buttons" onClick={this.handleSubmit} >
-                            Submit
-                        </Button>
+                            <Button variant="contained"
+                            color="primary"
+                            href="#contained-buttons" 
+                            onClick={this.handleSubmit} >
+                                Submit
+                           </Button>
                     </form>
+                    </div>
                 </div>
-                <footer>
-                    <hr></hr>
-                    <p>(C) Copyright Gor SHAROYAN /</p>
-                    <p> UI created by using :https://material-ui.com</p>
-                </footer>   
-             </div>   
+       </body>
         )
     }
 }
