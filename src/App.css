@@ -26,13 +26,13 @@ body{
     text-align: center;
     font-weight: 250;
 }
-.input-form {
+.inputs {
   padding:5px;
   margin:25px;
   border-radius: 35px;
   }
 
-.input-form{
+.inputs{
     display: flex;
     flex-direction: column;
     text-align: center;

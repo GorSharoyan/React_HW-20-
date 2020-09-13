@@ -15,7 +15,6 @@ export default class App extends React.Component {
       error: "",
     };
   }
-  //Buttons
 
   handleIncrease = () => {
     if (this.state.count < this.state.maxVal) {
@@ -40,9 +39,9 @@ export default class App extends React.Component {
       step: 1,
       maxVal: 0,
       minVal: 10,
+      error:"",
     }));
   };
-  //Form
 
   handleMinVal = (event) => {
     let validValue = !Number.isNaN(Number(event.target.value));
@@ -86,7 +85,6 @@ export default class App extends React.Component {
     }
   };
 
-  //Render
   render() {
     return (
       <body>
@@ -121,7 +119,7 @@ export default class App extends React.Component {
           <div className="counter-value">
             <p>{this.state.count}</p>
           </div>
-          <div className="input-form">
+          <div className="inputs">
             <label>
               <h3>Set Minimum Value</h3>
               <TextField
